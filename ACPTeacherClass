@@ -21,3 +21,9 @@ void Teacher::~Teacher(){
   free(schedule);
   free(teacherID);
 }
+
+void Teacher::Teacher(Course[] courses, int id){
+  for(int count = 0; count < 8; count++)
+    schedule[count] = couses[count];
+  teacherID = id;
+}
