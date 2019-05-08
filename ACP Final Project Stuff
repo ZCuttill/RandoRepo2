@@ -1,0 +1,144 @@
+class Teacher
+{
+  Course[8] schedule;
+  int teacherID;
+  
+  public:
+  void Teacher();
+  void ~Teacher();
+  void Teacher(Course[] courses, int id);
+  int getID();
+  void setID(int id);
+  Course[] getCourseList();
+  void setCourseList(Course[] courses);
+}
+
+void Teacher::Teacher(){
+  for(int count = 0; count < 8; count++)
+    schedule[count] = NULL;
+  teacherID = 0;
+}
+
+void Teacher::~Teacher(){
+  for(int count = 0; count < 8; count++)
+    free(schedule[count]);
+  free(schedule);
+  free(teacherID);
+}
+
+void Teacher::Teacher(Course[] courses, int id){
+  for(int count = 0; count < 8; count++)
+    schedule[count] = couses[count];
+  teacherID = id;
+}
+
+int getID()
+  return teacherID;
+
+void setID(int id)
+  teacherID = id;
+
+Course[] getCourseList()
+  return schedule;
+
+void setCourseList(Course[] courses){
+  for(int count = 0; count < 8; count++)
+    schedule[count] = courses[count];
+}
+
+class Course
+{
+  String courseName;
+  Teacher[] courseTeachers;
+  String courseCode;
+  String courseType;
+  double gpa;
+  String courseDescription;
+  
+  public:
+  void Course();
+  void ~Course();
+  void Course(String name, int numOfTeachers, Teacher[] cTs, String code, String type, double grade, String description);
+  String getCourseName();
+  Teacher[] getCourseTeachers();
+  String getCourseCode();
+  String getCourseType();
+  double getGPA();
+  String getDescription();
+  void setCourseName(String name);
+  void setCourseTeachers(Teacher[] teachers, int numOfTeachers);
+  void setCourseCode(String code);
+  void setCourseType(String type);
+  void setGPA(double grade);
+  void setDescription(String description);
+}
+
+void Course::Course(){
+  courseName = "";
+  courseCode = "";
+  courseType = "";
+  courseDescription = "";
+  gpa = 0.0;
+  courseTeachers = NULL;
+}
+
+void Course::~Course(){
+  free(courseName);
+  free(courseCode);
+  free(courseType);
+  free(courseDescription);
+  free(gpa);
+  for(int count = 0; count < courseTeachers.length; count++)
+    free(courseTeachers[count]);
+  free(courseTeachers);
+}
+
+void Course::Course(String name, int numOfTeachers, Teacher[] cTs, String code, String type, double grade, String description){
+  courseName = name;
+  courseTeachers = new Teacher[numOfTeachers];
+  for(int count = 0; count < numOfTeachers; count++)
+    courseTeachers[count] = cTs[count];
+  courseCode = code;
+  courseType = type;
+  gpa = grade;
+  courseDescription = description;
+}
+
+String Course::getCourseName()
+  return courseName;
+
+Teacher[] Course::getCourseTeachers()
+  return courseTeachers;
+  
+String Course::getCourseCode()
+  return courseCode;
+
+String Course::getCourseType()
+  return courseType;
+
+double Course::getGPA()
+  return gpa;
+
+String Course::getDescription()
+  return courseDecription;
+  
+void Course::setCourseName(String name)
+  courseName = name;
+
+void Course::setCourseTeachers(Teacher[] teachers, int numOfTeachers){
+  courseTeachers = new Teacher[numOfTeachers];
+  for(int count = 0; count < numOfTeachers; count++)
+    courseTeachers[count] = teachers[count];
+}
+
+void Course::setCourseCode(String code)
+  courseCode = code;
+  
+void Course::setCourseType(String type)
+  courseType = type;
+  
+void Course::setGPA(double grade)
+  gpa = grade;
+
+void Course::setDescription(String description)
+  courseDescription = description;
